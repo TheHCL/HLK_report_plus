@@ -41,3 +41,5 @@ C:\Users\Administrator\Desktop\vs\report_plus\HLKPlus\HLKPlus\obj\Debug\HLKPlus.
 C:\Users\Administrator\Desktop\vs\report_plus\HLKPlus\HLKPlus\obj\Debug\HLKPlus.exe
 C:\Users\Administrator\Desktop\vs\report_plus\HLKPlus\HLKPlus\obj\Debug\HLKPlus.pdb
 C:\Users\Administrator\Desktop\vs\report_plus\HLKPlus\HLKPlus\obj\Debug\HLKPlus.Form2.resources
+C:\Users\Administrator\Desktop\vs\report_plus\HLKPlus\HLKPlus\bin\Debug\microsoft.windows.kits.hardware.objectmodel.submission.dll
+C:\Users\Administrator\Desktop\vs\report_plus\HLKPlus\HLKPlus\bin\Debug\microsoft.windows.kits.hardware.objectmodel.submission.package.dll

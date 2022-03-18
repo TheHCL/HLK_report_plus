@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
 using Microsoft.Windows.Kits.Hardware.ObjectModel;
+using Microsoft.Windows.Kits.Hardware.ObjectModel.Submission;
+
 using Microsoft.Windows.Kits.Hardware.ObjectModel.DBConnection;
 using NPOI.HSSF.UserModel;
 using NPOI.XSSF.UserModel;
@@ -16,6 +18,7 @@ using NPOI.SS.UserModel;
 using System.IO;
 using NPOI.XSSF.Util;
 using NPOI.Util;
+
 
 namespace HLKPlus
 {
@@ -445,7 +448,37 @@ namespace HLKPlus
 
         private void button2_Click(object sender, EventArgs e)
         {
+            var folderBrowserDialog1 = new FolderBrowserDialog();
 
+            // Show the FolderBrowserDialog.
+            DialogResult result = folderBrowserDialog1.ShowDialog();
+            string folderName = null;
+            if (result == DialogResult.OK)
+            {
+                folderName = folderBrowserDialog1.SelectedPath;
+                //Do your work here!
+
+            }
+
+            if (folderName != null)
+            {
+                string text = listBox1.GetItemText(listBox1.SelectedItem);
+                IEnumerable<Test> t = Test_list(text);
+                PackageWriter packagewriter = new PackageWriter(ConnectToController().GetProject(text));
+                foreach (Test a in t)
+                {
+                    if (a.Status.ToString() == "Failed")
+                    {
+                        List <Test> fail_test = new List<Test>();
+                        fail_test.Add(a);
+                        string filename = folderName + "\\" + a.Name.ToString()+".hlkp";
+                        packagewriter.SavePartialPackage(filename, fail_test);
+                        
+                    }
+                }
+                MessageBox.Show("Done", "info");
+
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)
